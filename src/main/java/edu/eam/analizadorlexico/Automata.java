@@ -44,6 +44,19 @@ public class Automata {
     private String isNew = "new";
     private String isAnd = "and";
     private String isOr = "or";
+    private String keyOpen = "{";
+    private String keyClose = "}";
+    private String parenthesisOpen = "(";
+    private String parenthesisClose = ")";
+    private String plus = "+";
+    private String minus = "-";
+    private String times = "*";
+    private String divided = "/";
+    private String equals = "=";
+    private String lessThan = "<";
+    private String greaterThan = ">";
+    private String commentary = "//";
+    private String semicolon = ";";
     Lexema lex;
 
     public Character[] leer(String texto) {
@@ -730,6 +743,277 @@ public class Automata {
                             return null;
                         }
                         posIn++;
+                    }
+                }
+                pos++;
+            }
+        } else {
+            return null;
+        }
+        return null;
+    }
+
+    public Lexema esSimbolo(Character ch[], int pos) {
+
+        int posKeyClose = pos;
+        int posPaOpen = pos;
+        int posPaClose = pos;
+        int posPlus = pos;
+        int posMinus = pos;
+        int posTimes = pos;
+        int posDivided = pos;
+        int posEquals = pos;
+        int posLess = pos;
+        int posGreater = pos;
+        int posCo = pos;
+        int posSemi = pos;
+
+        if (pos > 0 && ch[pos - 1].toString().equals(" ")) {
+
+            palabra = keyOpen.toCharArray();
+            String lexema = "";
+
+            for (int j = 0; j < palabra.length; j++) {
+                if (ch[pos].equals(palabra[j])) {
+                    lexema += ch[pos].toString();
+                    if (lexema.equals(keyOpen)) {
+                        posActual = pos;
+                        if (ch[pos + 1].toString().equals(" ")) {
+                            pos++;
+                            return lex = new Lexema(posKeyClose, "Símbolo", lexema);
+                        } else {
+                            return null;
+                        }
+                    }
+                } else {
+                    palabra = keyClose.toCharArray();
+                    lexema = "";
+
+                    for (int i = 0; i < palabra.length; i++) {
+                        if (ch[posKeyClose].equals(palabra[i])) {
+                            lexema += ch[posKeyClose].toString();
+                            if (lexema.equals(keyClose)) {
+                                posActual = posKeyClose;
+                                if (ch[posKeyClose + 1].toString().equals(" ")) {
+                                    posKeyClose++;
+                                    return lex = new Lexema(pos, "Símbolo", lexema);
+                                } else {
+                                    return null;
+                                }
+                            }
+                        } else {
+                            palabra = parenthesisOpen.toCharArray();
+                            lexema = "";
+
+                            for (int d = 0; d < palabra.length; d++) {
+                                if (ch[posPaOpen].equals(palabra[d])) {
+                                    lexema += ch[posPaOpen].toString();
+                                    if (lexema.equals(parenthesisOpen)) {
+                                        posActual = posPaOpen;
+                                        if (ch[posPaOpen + 1].toString().equals(" ")) {
+                                            posPaOpen++;
+                                            return lex = new Lexema(pos, "Símbolo", lexema);
+                                        } else {
+                                            return null;
+                                        }
+                                    }
+                                } else {
+                                    palabra = parenthesisClose.toCharArray();
+                                    lexema = "";
+
+                                    for (int s = 0; s < palabra.length; s++) {
+                                        if (ch[posPaClose].equals(palabra[s])) {
+                                            lexema += ch[posKeyClose].toString();
+                                            if (lexema.equals(parenthesisClose)) {
+                                                posActual = posPaClose;
+                                                if (ch[posPaClose + 1].toString().equals(" ")) {
+                                                    posPaClose++;
+                                                    return lex = new Lexema(pos, "Símbolo", lexema);
+                                                } else {
+                                                    return null;
+                                                }
+                                            }
+                                        } else {
+                                            palabra = plus.toCharArray();
+                                            lexema = "";
+
+                                            for (int o = 0; o < palabra.length; o++) {
+                                                if (ch[posPlus].equals(palabra[o])) {
+                                                    lexema += ch[posPlus].toString();
+                                                    if (lexema.equals(plus)) {
+                                                        posActual = posPlus;
+                                                        if (ch[posPlus + 1].toString().equals(" ")) {
+                                                            posPlus++;
+                                                            return lex = new Lexema(pos, "Símbolo", lexema);
+                                                        } else {
+                                                            return null;
+                                                        }
+                                                    }
+                                                } else {
+                                                    palabra = minus.toCharArray();
+                                                    lexema = "";
+
+                                                    for (int f = 0; f < palabra.length; f++) {
+                                                        if (ch[posMinus].equals(palabra[f])) {
+                                                            lexema += ch[posMinus].toString();
+                                                            if (lexema.equals(minus)) {
+                                                                posActual = posMinus;
+                                                                if (ch[posMinus + 1].toString().equals(" ")) {
+                                                                    posMinus++;
+                                                                    return lex = new Lexema(pos, "Símbolo", lexema);
+                                                                } else {
+                                                                    return null;
+                                                                }
+                                                            }
+                                                        } else {
+                                                            palabra = times.toCharArray();
+                                                            lexema = "";
+
+                                                            for (int c = 0; c < palabra.length; c++) {
+                                                                if (ch[posTimes].equals(palabra[c])) {
+                                                                    lexema += ch[posTimes].toString();
+                                                                    if (lexema.equals(times)) {
+                                                                        posActual = posTimes;
+                                                                        if (ch[posTimes + 1].toString().equals(" ")) {
+                                                                            posTimes++;
+                                                                            return lex = new Lexema(pos, "Símbolo", lexema);
+                                                                        } else {
+                                                                            return null;
+                                                                        }
+                                                                    }
+                                                                } else {
+                                                                    palabra = divided.toCharArray();
+                                                                    lexema = "";
+
+                                                                    for (int e = 0; e < palabra.length; e++) {
+                                                                        if (ch[posDivided].equals(palabra[e])) {
+                                                                            lexema += ch[posDivided].toString();
+                                                                            if (lexema.equals(divided)) {
+                                                                                posActual = posDivided;
+                                                                                if (ch[posDivided + 1].toString().equals(" ")) {
+                                                                                    posDivided++;
+                                                                                    return lex = new Lexema(pos, "Símbolo", lexema);
+                                                                                } else {
+                                                                                    return null;
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            palabra = equals.toCharArray();
+                                                                            lexema = "";
+
+                                                                            for (int a = 0; a < palabra.length; a++) {
+                                                                                if (ch[posEquals].equals(palabra[a])) {
+                                                                                    lexema += ch[posEquals].toString();
+                                                                                    if (lexema.equals(equals)) {
+                                                                                        posActual = posEquals;
+                                                                                        if (ch[posEquals + 1].toString().equals(" ")) {
+                                                                                            posEquals++;
+                                                                                            return lex = new Lexema(pos, "Símbolo", lexema);
+                                                                                        } else {
+                                                                                            return null;
+                                                                                        }
+                                                                                    }
+                                                                                } else {
+                                                                                    palabra = lessThan.toCharArray();
+                                                                                    lexema = "";
+
+                                                                                    for (int l = 0; l < palabra.length; l++) {
+                                                                                        if (ch[posLess].equals(palabra[l])) {
+                                                                                            lexema += ch[posLess].toString();
+                                                                                            if (lexema.equals(lessThan)) {
+                                                                                                posActual = posLess;
+                                                                                                if (ch[posLess + 1].toString().equals(" ")) {
+                                                                                                    posLess++;
+                                                                                                    return lex = new Lexema(pos, "Símbolo", lexema);
+                                                                                                } else {
+                                                                                                    return null;
+                                                                                                }
+                                                                                            }
+                                                                                        } else {
+                                                                                            palabra = greaterThan.toCharArray();
+                                                                                            lexema = "";
+
+                                                                                            for (int g = 0; g < palabra.length; g++) {
+                                                                                                if (ch[posGreater].equals(palabra[g])) {
+                                                                                                    lexema += ch[posGreater].toString();
+                                                                                                    if (lexema.equals(greaterThan)) {
+                                                                                                        posActual = posGreater;
+                                                                                                        if (ch[posGreater + 1].toString().equals(" ")) {
+                                                                                                            posGreater++;
+                                                                                                            return lex = new Lexema(pos, "Símbolo", lexema);
+                                                                                                        } else {
+                                                                                                            return null;
+                                                                                                        }
+                                                                                                    }
+                                                                                                } else {
+                                                                                                    palabra = commentary.toCharArray();
+                                                                                                    lexema = "";
+
+                                                                                                    for (int b = 0; b < palabra.length; b++) {
+                                                                                                        if (ch[posCo].equals(palabra[b])) {
+                                                                                                            lexema += ch[posCo].toString();
+                                                                                                            if (lexema.equals(commentary)) {
+                                                                                                                posActual = posCo;
+                                                                                                                if (ch[posCo + 1].toString().equals(" ")) {
+                                                                                                                    posCo++;
+                                                                                                                    return lex = new Lexema(pos, "Símbolo", lexema);
+                                                                                                                } else {
+                                                                                                                    return null;
+                                                                                                                }
+                                                                                                            }
+                                                                                                        } else {
+                                                                                                            palabra = semicolon.toCharArray();
+                                                                                                            lexema = "";
+
+                                                                                                            for (int v = 0; v < palabra.length; v++) {
+                                                                                                                if (ch[posSemi].equals(palabra[v])) {
+                                                                                                                    lexema += ch[posSemi].toString();
+                                                                                                                    if (lexema.equals(semicolon)) {
+                                                                                                                        posActual = posSemi;
+                                                                                                                        if (ch[posSemi + 1].toString().equals(" ")) {
+                                                                                                                            posSemi++;
+                                                                                                                            return lex = new Lexema(pos, "Símbolo", lexema);
+                                                                                                                        } else {
+                                                                                                                            return null;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                } else {
+                                                                                                                    return null;
+                                                                                                                }
+                                                                                                                posSemi++;
+                                                                                                            }
+                                                                                                        }
+                                                                                                        posCo++;
+                                                                                                    }
+                                                                                                }
+                                                                                                posGreater++;
+                                                                                            }
+                                                                                        }
+                                                                                        posLess++;
+                                                                                    }
+                                                                                }
+                                                                                posEquals++;
+                                                                            }
+                                                                        }
+                                                                        posDivided++;
+                                                                    }
+                                                                }
+                                                                posTimes++;
+                                                            }
+                                                        }
+                                                        posMinus++;
+                                                    }
+                                                }
+                                                posPlus++;
+                                            }
+                                        }
+                                        posPaClose++;
+                                    }
+                                }
+                                posPaOpen++;
+                            }
+                        }
+                        posKeyClose++;
                     }
                 }
                 pos++;

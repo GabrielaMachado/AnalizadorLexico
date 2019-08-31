@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author user
  */
 public class AnalizadorLexico {
+
     /**
      * @param args the command line arguments
      */
@@ -69,20 +70,27 @@ public class AnalizadorLexico {
                                     arrayLexema.add(lexema);
                                     verificarAutomatas(cadena);
                                 } else {
-                                    lexema = (prueba.esOperadorRacional(cadena, posInicial));
+                                    lexema = (prueba.esSimbolo(cadena, posInicial));
                                     if (lexema != null) {
                                         posInicial = posActual + 1;
                                         arrayLexema.add(lexema);
                                         verificarAutomatas(cadena);
                                     } else {
-                                        lexema = prueba.esIdentificador(cadena, posInicial);
+                                        lexema = (prueba.esOperadorRacional(cadena, posInicial));
                                         if (lexema != null) {
-                                            posInicial = posActual;
+                                            posInicial = posActual + 1;
                                             arrayLexema.add(lexema);
-                                        } else {
-                                            System.out.println("ERROR");
-                                            posInicial = posActual;
                                             verificarAutomatas(cadena);
+                                        } else {
+                                            lexema = prueba.esIdentificador(cadena, posInicial);
+                                            if (lexema != null) {
+                                                posInicial = posActual;
+                                                arrayLexema.add(lexema);
+                                            } else {
+                                                System.out.println("ERROR");
+                                                posInicial = posActual;
+                                                verificarAutomatas(cadena);
+                                            }
                                         }
                                     }
                                 }
