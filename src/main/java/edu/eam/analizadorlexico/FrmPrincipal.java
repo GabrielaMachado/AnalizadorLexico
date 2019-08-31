@@ -201,9 +201,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
             verificarAutomatas(cadena);
         } else {
             arrayLexema.clear();
-
             verificarAutomatas(cadena);
-
         }
         jTable1.setModel(llenarTabla());
 

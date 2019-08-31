@@ -14,7 +14,7 @@ import static edu.eam.analizadorlexico.FrmPrincipal.cadena;
  */
 public class Automata {
 
-    private Character tokens[] = {'=', '(', ')', '+', '-', '*', '/', ';', '<', '>',};
+    private Character tokens[] = {'@', 'ñ', '~', '$', '°', '¡'};
     private Character au = 'x';
     private char[] palabra;
     private String isTrue = "true";
@@ -74,11 +74,7 @@ public class Automata {
         return ch;
     }
 
-    /**
-     * ****************************************
-     * Verificamos la Expresion para ver si es un digito con el metodo de la
-     * clase Character isDigit() ****************************************
-     */
+
     public void esDigito(Character ch[]) {
         int cont = 0;
         String cualesSon = "";
@@ -109,11 +105,7 @@ public class Automata {
         }
     }
 
-    /**
-     * ****************************************
-     * Verificamos la Expresion para ver si es un digito con el metodo de la
-     * clase Character isDigit() ****************************************
-     */
+ 
     public Lexema esLiteralBooleana(Character ch[], int pos) {
 
         int posIn = pos;
@@ -1025,33 +1017,23 @@ public class Automata {
         return null;
     }
 
-    /**
-     * ****************************************
-     * Verificamos la Expresion para ver si es un operador evaluandolo contra
-     * nuestros tokens ****************************************
-     */
-    public void esToken(Character ch[]) {
-        int ope = 0;
-        String cualesSon = "";
-        for (int i = 0; i < ch.length; i++) {
-            for (int j = 0; j < tokens.length; j++) {
-                if (ch[i].equals(tokens[j])) {
-                    ope++;
-                    cualesSon += ch[i].toString() + " ";
-                }
+    
+    public Lexema esUnError(Character ch[], int pos) {
+        String lexema = "";
+        for (int j = 0; j < tokens.length; j++) {
+            if (ch[pos].toString().equals(tokens[j].toString())) {
+                pos++;
+                lexema = ch[pos].toString();
+                return lex = new Lexema(pos - 1, "Error", lexema);
             }
         }
-//        Lexema out = new Lexema(ope, "Tokens", cualesSon);
-//        out.verTipos();
+        return null;
     }
 
-    /**
-     * ***************************
-     * Verificamos la Expresion para ver si es un identificador con el metodo de
-     * la clase Cha racter isJavaIdentifierStart ***************************
-     */
+    
     public Lexema esIdentificador(Character ch[], int pos) {
         String lexema = "";
+        int posIden = pos;
         // lexema = ch[pos].toString();
         if (ch[pos].toString().equals(" ")) {
             pos++;
@@ -1063,25 +1045,17 @@ public class Automata {
                 System.out.println("." + ch[pos] + ".");
                 lexema += ch[pos].toString();
                 pos++;
-                posActual = pos;                
+                posActual = pos;
             }
-            return lex = new Lexema(pos - 1, "Identificadores", lexema);
+            return lex = new Lexema(posIden, "Identificadores", lexema);
         }
-
-        //     if (!) {            
-        //          while (!ch[pos + 1].equals(" ")) {
-//        System.out.print("." + ch[pos] + ".");
-//        pos++;
-//        posActual = pos;
-//        //          }
-//
-//        return lex = new Lexema(pos - 1, "Identificadores", lexema);
-//        //     } else {
-        //         System.out.println("Espacio");
-        //       return null;
-        // }
     }
+
+    public Lexema esError(Character ch[], int pos) {
+        String lexema = "";
+        pos++;
+        posActual = pos;
+        return lex = new Lexema(pos - 1, "Error", lexema);
+    }
+
 }
-
-//        }
-
