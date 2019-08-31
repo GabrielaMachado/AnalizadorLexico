@@ -6,6 +6,7 @@
 package edu.eam.analizadorlexico;
 
 import static edu.eam.analizadorlexico.AnalizadorLexico.posActual;
+import static edu.eam.analizadorlexico.FrmPrincipal.cadena;
 
 /**
  *
@@ -1051,15 +1052,19 @@ public class Automata {
      */
     public Lexema esIdentificador(Character ch[], int pos) {
         String lexema = "";
-        lexema = ch[pos].toString();
+        // lexema = ch[pos].toString();
         if (ch[pos].toString().equals(" ")) {
             pos++;
             posActual = pos;
             return null;
         } else {
-
-            pos++;
-            posActual = pos;
+            while (!ch[pos].toString().equals(" ")) {
+                System.out.println(pos);
+                System.out.println("." + ch[pos] + ".");
+                lexema += ch[pos].toString();
+                pos++;
+                posActual = pos;                
+            }
             return lex = new Lexema(pos - 1, "Identificadores", lexema);
         }
 
@@ -1076,6 +1081,7 @@ public class Automata {
         //       return null;
         // }
     }
+}
 
 //        }
-}
+

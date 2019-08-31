@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="Pruebas" time="0.241" errors="0" skipped="0">
+<testsuite tests="28" failures="0" name="Pruebas" time="0.157" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_111\jre\bin"/>
@@ -7,6 +7,7 @@
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
+    <property name="java.rmi.server.randomIDs" value="true"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -62,5 +63,32 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Pruebas" name="AutomataLiteralBooleanoTrue" time="0.124"/>
+  <testcase classname="Pruebas" name="AutomataTipoDatoInteger" time="0.006"/>
+  <testcase classname="Pruebas" name="AutomataTipoDatoColor" time="0"/>
+  <testcase classname="Pruebas" name="AutomataTipoDatoStyle" time="0"/>
+  <testcase classname="Pruebas" name="AutomataSalidaDatoMessage" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEntradaDatoNull" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEntradaDatoVoid" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEntradaDatoCanvas" time="0"/>
+  <testcase classname="Pruebas" name="AutomataLiteralBooleanoTrue" time="0"/>
+  <testcase classname="Pruebas" name="AutomataTipoDatoChar" time="0"/>
+  <testcase classname="Pruebas" name="AutomataSalidaDatoReturn" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEstructuraDeControlBreak" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEstructuraDeControlWhile" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEstructuraDeControlSwitch" time="0"/>
+  <testcase classname="Pruebas" name="AutomataTipoDatoDouble" time="0"/>
+  <testcase classname="Pruebas" name="AutomataOpreadorRacionalAnd" time="0"/>
+  <testcase classname="Pruebas" name="AutomataTipoDatoFigure" time="0"/>
+  <testcase classname="Pruebas" name="AutomataTipoDatoBoolean" time="0"/>
+  <testcase classname="Pruebas" name="AutomataTipoDatoString" time="0"/>
+  <testcase classname="Pruebas" name="AutomataExcepcionTry" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEstructuraDeControlCase" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEstructuraDeControlElse" time="0"/>
+  <testcase classname="Pruebas" name="AutomataLiteralBooleanoFalse" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEntradaDatoNew" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEstructuraDeControlFor" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEstructuraDeControlDo" time="0"/>
+  <testcase classname="Pruebas" name="AutomataEstructuraDeControlIf" time="0"/>
+  <testcase classname="Pruebas" name="AutomataExcepcionCatch" time="0"/>
+  <testcase classname="Pruebas" name="AutomataOpreadorRacionalOr" time="0"/>
 </testsuite>
